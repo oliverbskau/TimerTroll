@@ -18,7 +18,7 @@
         font-family: fantasy;
       }
       body {
-        background-color: white;
+        background-color: rgb(0, 0, 0);
       }
     </style>
   </head>
@@ -28,17 +28,12 @@
     </div>
 
     <script>
+    
+        const time = 10;
       function setCurrentTime() {
-        const clock = {
-          hour: new Date().getHours(),
-          minute: new Date().getMinutes(),
-          seconds: new Date().getSeconds(),
-        };
-        const clockElement = document.getElementById("clock");
-        clockElement.innerHTML =
-          clock.hour + " : " + clock.minute + " : " + clock.seconds;
-        const randomColor = Math.floor(Math.random() * 16777215).toString(16); //found this line on google
-        clockElement.style.color = "#" + randomColor;
+        const timeElement = document.getElementById('clock');
+        timeElement.innerText = time;
+        time -= 1;
         repeatCurrentTime();
       }
 
