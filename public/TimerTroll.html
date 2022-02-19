@@ -14,36 +14,41 @@
         text-align: center;
       }
       p {
-        font-size: 200px;
+        font-size: 100px;
         font-family: fantasy;
         color: red;
       }
       body {
         background-color: rgb(0, 0, 0);
       }
+      h1 {
+          font-family: fantasy;
+          font-size: 100px;
+          color: red;
+      }
+
     </style>
   </head>
   <body>
     <div id="clockDiv">
+        <h1>|Time until complete shutdown|</h1>
       <p id="clock"></p>
     </div>
 
     <script>
-    
-        
-      function setCurrentTime() {
-        const timeElement = document.getElementById('clock');
-        timeElement.innerText = time;
-        time +=1;
-        repeatCurrentTime();
-      }
+      let timeleft = 15;
+      const timerElement = document.getElementById('clock');
+      const downloadTimer = setInterval(function () {
+        if (timeleft <= 0) {
+          clearInterval(downloadTimer);
+          timerElement.innerHTML = "Finished";
+          window.location.href =  "https://clock-website-kea.herokuapp.com/";
+        } else {
+          timerElement.innerHTML = timeleft + " seconds remaining";
+        }
+        timeleft -= 1;
+      }, 1000);
 
-      function repeatCurrentTime() {
-        const repeatTime = 1000;
-        const timeOut = setTimeout("setCurrentTime()", repeatTime);
-      }
-
-      setCurrentTime();
     </script>
   </body>
 </html>
